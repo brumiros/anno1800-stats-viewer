@@ -64,7 +64,13 @@ namespace abacus.desktop
                         {
                             new ConsumptionNode { rate = 1.23452 * x, resourceType = Resource.Fish },
                             new ConsumptionNode { rate = 34.23452, resourceType = Resource.Schnapps },
-                            new ConsumptionNode { rate = 0.12344 * x, resourceType = Resource.WorkClothes }
+                            new ConsumptionNode { rate = 0.12344 * x, resourceType = Resource.WorkClothes },
+                            new ConsumptionNode { rate = 0.12344, resourceType = Resource.Beer },
+                            new ConsumptionNode { rate = 0.6, resourceType = Resource.Champagne },
+                            new ConsumptionNode { rate = 0.312344, resourceType = Resource.FriedPlantains },
+                            new ConsumptionNode { rate = 5.12344, resourceType = Resource.SewingMachines },
+                            new ConsumptionNode { rate = 7.12344, resourceType = Resource.Chocolate },
+                            new ConsumptionNode { rate = 8, resourceType = Resource.Oil }
                         },
                         ProductionNodes = new List<ProductionNode>
                         {

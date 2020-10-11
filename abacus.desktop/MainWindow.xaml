@@ -11,7 +11,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Islands}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.RowSpan="2" ItemsSource="{Binding Islands}"
                  SelectionMode="Extended">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -25,33 +30,31 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 
-        <StackPanel Grid.Column="1" DataContext="{Binding IslandsSelection}" Orientation="Vertical">
-            <TextBlock Text="{Binding Name}" Padding="5" />
-            <ListBox ItemsSource="{Binding Goods}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" MinWidth="100" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding IslandsSelection.Name}" Padding="5" />
+        <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding IslandsSelection.Goods}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                            <TextBlock Grid.RowSpan="2" Text="{Binding Name}" VerticalAlignment="Center" Padding="5" />
-                            <TextBlock Grid.Row="0" Grid.Column="1"
-                                       Text="{Binding Demand, StringFormat=Demand: {0:0.00}}"
-                                       HorizontalAlignment="Stretch" Background="LightSkyBlue" />
-                            <TextBlock Grid.Row="1" Grid.Column="1"
-                                       Text="{Binding Supply, StringFormat=Supply: {0:0.00}}"
-                                       HorizontalAlignment="Stretch" Background="DarkSeaGreen" />
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+                        <TextBlock Grid.RowSpan="2" Text="{Binding Name}" VerticalAlignment="Center" Padding="5" />
+                        <TextBlock Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding Demand, StringFormat=Demand: {0:0.00}}"
+                                   HorizontalAlignment="Stretch" Background="LightSkyBlue" />
+                        <TextBlock Grid.Row="1" Grid.Column="1"
+                                   Text="{Binding Supply, StringFormat=Supply: {0:0.00}}"
+                                   HorizontalAlignment="Stretch" Background="DarkSeaGreen" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
