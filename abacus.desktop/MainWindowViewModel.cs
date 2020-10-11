@@ -53,13 +53,13 @@ namespace abacus.desktop
                     {
                         new ConsumptionNode { rate = 1.23452, resourceType = Resource.Fish },
                         new ConsumptionNode { rate = 34.23452, resourceType = Resource.Schnapps },
-                        new ConsumptionNode { rate = 0.12344, resourceType = Resource.BasicClothes }
+                        new ConsumptionNode { rate = 0.12344, resourceType = Resource.WorkClothes }
                     },
                     ProductionNodes = new List<ProductionNode>
                     {
                         new ProductionNode { output = Resource.Fish, rate = 1.2 },
                         new ProductionNode { output = Resource.Schnapps, rate = 2.2 },
-                        new ProductionNode { output = Resource.BasicClothes, rate = 3.2 }
+                        new ProductionNode { output = Resource.WorkClothes, rate = 3.2 }
                     }
                 },
                 new IslandRawDetails
@@ -69,13 +69,13 @@ namespace abacus.desktop
                     {
                         new ConsumptionNode { rate = 1.23452, resourceType = Resource.Fish },
                         new ConsumptionNode { rate = 34.23452, resourceType = Resource.Schnapps },
-                        new ConsumptionNode { rate = 0.12344, resourceType = Resource.BasicClothes }
+                        new ConsumptionNode { rate = 0.12344, resourceType = Resource.WorkClothes }
                     },
                     ProductionNodes = new List<ProductionNode>
                     {
                         new ProductionNode { output = Resource.Fish, rate = 3.2 },
                         new ProductionNode { input = new List<Resource> { Resource.Potatoes }, output = Resource.Schnapps, rate = 5.2 },
-                        new ProductionNode { input = new List<Resource> { Resource.Wool }, output = Resource.BasicClothes, rate = 6.2 }
+                        new ProductionNode { input = new List<Resource> { Resource.Wool }, output = Resource.WorkClothes, rate = 6.2 }
                     }
                 }
             });
