@@ -103,12 +103,14 @@ namespace abacus.desktop
         {
             var selectedIslands = islands.Where(i => i.IsSelected).ToList();
 
+            var mergedGoods =
+                IslandGoodViewModel.MergeGoodViewModels(selectedIslands.SelectMany(i => i.Goods))
+                    .Where(good => good.Demand > 0 || good.Supply > 0);
             IslandsSelection = new IslandViewModel
             {
                 Id = 0,
                 Name = string.Join(", ", selectedIslands.Select(i => i.Name)),
-                Goods = new ObservableCollection<IslandGoodViewModel>(IslandGoodViewModel.MergeGoodViewModels(
-                    selectedIslands.SelectMany(i => i.Goods)))
+                Goods = new ObservableCollection<IslandGoodViewModel>(mergedGoods)
             };
         }
 
