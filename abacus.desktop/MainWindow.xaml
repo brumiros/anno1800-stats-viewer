@@ -11,15 +11,21 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Islands}" SelectedValue="{Binding SelectedIsland}" SelectedIndex="0">
+        <ListBox ItemsSource="{Binding Islands}"
+                 SelectionMode="Extended">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"></TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
         </ListBox>
 
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedIsland}" Orientation="Vertical">
+        <StackPanel Grid.Column="1" DataContext="{Binding IslandsSelection}" Orientation="Vertical">
             <TextBlock Text="{Binding Name}" Padding="5" />
             <ListBox ItemsSource="{Binding Goods}">
                 <ListBox.ItemTemplate>
