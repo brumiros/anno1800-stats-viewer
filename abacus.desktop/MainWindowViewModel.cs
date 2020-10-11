@@ -46,6 +46,13 @@ namespace abacus.desktop
                 .ToCollection()
                 .Subscribe(UpdateSelectedIsland);
 
+            // UseDevData();
+            var telegraphService = new TelegraphService();
+            telegraphService.IslandDetailsObservable.ObserveOnDispatcher().Subscribe(OnDataRefreshed);
+        }
+
+        private void UseDevData()
+        {
             Observable.Interval(TimeSpan.FromSeconds(1)).ObserveOnDispatcher().Subscribe(x =>
             {
                 OnDataRefreshed(new List<IslandRawDetails>
@@ -84,11 +91,6 @@ namespace abacus.desktop
                     }
                 });
             });
-
-            // var telegraphService = new TelegraphService();
-            // telegraphService.IslandDetailsObservable
-            //     .ObserveOnDispatcher()
-            //     .Subscribe(OnDataRefreshed);
         }
 
         private void UpdateSelectedIsland(IReadOnlyCollection<IslandViewModel> islands)
@@ -106,7 +108,7 @@ namespace abacus.desktop
 
         private void OnDataRefreshed(IEnumerable<IslandRawDetails> islandDetails)
         {
-            Console.WriteLine("Got data");
+            // Console.WriteLine("Got data");
             var newIslandViewModels = islandDetails.Select(IslandViewModel.FromRawDetails).ToList();
             var islandsToRemove = _islandsSourceCache.Items.Where(
                 oldVm => !newIslandViewModels.Any(newVm => newVm.Id == oldVm.Id));

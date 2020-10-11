@@ -16,7 +16,7 @@ namespace abacus.core
         {
             _telegraph = new Telegraph();
             IslandDetailsObservable = Observable
-                .Interval(TimeSpan.FromSeconds(1))
+                .Interval(TimeSpan.FromSeconds(2))
                 .Select(_ => GetIslandDetails());
         }
 
@@ -28,7 +28,10 @@ namespace abacus.core
                 return new List<IslandRawDetails>();
             }
 
-            allIslands = allIslands.Where(island => island.name.Length > 0 && island.name.Length < 20).ToList();
+            allIslands = allIslands
+                .Where(island => island.name.Length > 0 && island.name.Length < 20)
+                .OrderBy(i => i.name)
+                .ToList();
             var allIslandsDetails = new List<IslandRawDetails>();
 
             foreach (var island in allIslands)
@@ -47,19 +50,19 @@ namespace abacus.core
                     continue;
 
                 var validBuildings = buildings.Where(b => b.buidlingType != Building.Invalid).ToList();
-                var productionBuildingsIds = new[] { Building.Bakery, Building.GrainFarm };
-                var productionBuildings = validBuildings.Where(b => productionBuildingsIds.Contains(b.buidlingType)).ToList();
-                // Console.WriteLine($"{buildings.Count} buildings ({validBuildings.Count} valid, {productionBuildings.Count} production)");
+                var productionBuildings = RDAHelper.GetProductionBuildings();
 
                 var productionNodes = new List<ProductionNode>();
-                foreach (var building in productionBuildings)
+                foreach (var building in validBuildings)
                 {
-                    // Console.WriteLine($"Building {building.id} - {building.buidlingType.ToString()}");
-
+                    if (!productionBuildings.Contains(building.buidlingType))
+                    {
+                        continue;
+                    }
                     if (!_telegraph.GetBuildingProduction(island.id, building.id, out var productionNode))
                         continue;
                     productionNodes.Add(productionNode);
-                    Console.WriteLine($"{productionNode.rate} {productionNode.output}");
+                    // Console.WriteLine($"Building {building.id} - {building.buidlingType.ToString()} = {productionNode.output} @ {productionNode.rate}");
                 }
 
                 allIslandsDetails.Add(new IslandRawDetails
@@ -69,6 +72,8 @@ namespace abacus.core
                     ProductionNodes = productionNodes
                 });
             }
+
+            // Console.WriteLine("Loaded all islands");
 
             return allIslandsDetails;
         }
