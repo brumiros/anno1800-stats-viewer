@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>abacus.desktop</RootNamespace>
+        <UseWPF>true</UseWPF>
+        <LangVersion>8</LangVersion>
+        <AssemblyName>abacus.desktop</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\abacus.core\abacus.core.csproj" />
+    </ItemGroup>
+
+</Project>
