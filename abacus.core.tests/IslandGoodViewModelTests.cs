@@ -17,8 +17,8 @@ namespace abacus.core.tests
 
             var expectedGoods = new[]
             {
-                new IslandGoodViewModel { Resource = Resource.Plantains, Demand = 10.8, Supply = 0.9 },
-                new IslandGoodViewModel { Resource = Resource.Bricks, Demand = 0, Supply = 1.3 }
+                new IslandGoodViewModel { Resource = Resource.Bricks, Demand = 0, Supply = 1.3 },
+                new IslandGoodViewModel { Resource = Resource.Plantains, Demand = 10.8, Supply = 0.9 }
             };
             CollectionAssert.AreEqual(expectedGoods, mergedGoods);
         }
