@@ -21,10 +21,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "abacus.core.tests", "abacus.core.tests\abacus.core.tests.csproj", "{A9382091-04C1-41E6-9528-2F823D428FFD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TomCruise", "anno1800-scripting-api\TomCruise\TomCruise.vcxproj", "{74275052-37D7-4BB3-A327-360101C97B21}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E4B53CA-6B77-4E1F-A4FD-A5CD6BC7CAA6} = {8E4B53CA-6B77-4E1F-A4FD-A5CD6BC7CAA6}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Q", "anno1800-scripting-api\Q\Q.vcxproj", "{8E4B53CA-6B77-4E1F-A4FD-A5CD6BC7CAA6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SurveillanceVan", "anno1800-scripting-api\SurveillanceVan\SurveillanceVan.vcxproj", "{CE9D9EE8-779F-4CF1-BF68-D18F48D18BF3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E4B53CA-6B77-4E1F-A4FD-A5CD6BC7CAA6} = {8E4B53CA-6B77-4E1F-A4FD-A5CD6BC7CAA6}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
