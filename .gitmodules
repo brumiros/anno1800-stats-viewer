@@ -1,3 +1,3 @@
 [submodule "anno1800-scripting-api"]
 	path = anno1800-scripting-api
-	url = git@github.com:brumiros/anno1800-scripting-api.git
+	url = https://github.com/brumiros/anno1800-scripting-api.git
